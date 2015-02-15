@@ -17,9 +17,18 @@ public class Player
 
 	private int winCount_ = 0;
 
+	/** 与えられた戦略 */
+
+	private Tactics tactics_;
+
 	//-----
 	//プレイヤークラスの操作
 	//-----
+	
+	// プレイヤーに戦略を渡す。
+	void setTactics(Tactics tactics){
+		tactics_ = tactics;
+	}
 	
 	/**
 	 * ジャンケンの手を出す
@@ -27,32 +36,10 @@ public class Player
 	 * @return ジャンケンの手
 	 */
 
-	public int showhHand()
+	public int showHand()
 	{
-		//--間違い
-		int hand = 0;
-
-		double randomNum = Math.random() * 3;
-
-
-		if(randomNum < 1.0)
-		{
-			hand = STONE;
-		}
-		else if(randomNum => 1.0 && randomNum < 2.0)
-		{
-			hand = SCISSORS;
-		}
-		else if(randomNum => 3.0)
-		{
-			hand = PAPER;
-  
-		}
-
+		int hand = tactics_.readTactics();
 		return hand;
-
-
-		//--間違い
 	}
 
 
@@ -80,3 +67,4 @@ public class Player
 	{
 		return winCount_;
 	}
+}
