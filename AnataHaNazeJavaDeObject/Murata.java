@@ -1,0 +1,82 @@
+public class Player
+{
+
+	public static final int STONE = 0;
+	public static final int SCISSORS = 1;
+	public static final int PAPER = 2;
+
+	//-----
+	//プレイヤークラスの属性
+	//-----
+	
+	/** プレイヤーの名前 */
+
+	private String name_;
+
+	/** プレイヤーの勝った回数　*/
+
+	private int winCount_ = 0;
+
+	//-----
+	//プレイヤークラスの操作
+	//-----
+	
+	/**
+	 * ジャンケンの手を出す
+	 *
+	 * @return ジャンケンの手
+	 */
+
+	public int showhHand()
+	{
+		//--間違い
+		int hand = 0;
+
+		double randomNum = Math.random() * 3;
+
+
+		if(randomNum < 1.0)
+		{
+			hand = STONE;
+		}
+		else if(randomNum => 1.0 && randomNum < 2.0)
+		{
+			hand = SCISSORS;
+		}
+		else if(randomNum => 3.0)
+		{
+			hand = PAPER;
+  
+		}
+
+		return hand;
+
+
+		//--間違い
+	}
+
+
+	/**
+	 * 審判から勝敗を聞く
+	 *
+	 * @param result true:勝 false:負
+	 */
+
+	public void notifyResult(boolean result)
+	{
+		if(true == result)
+		{
+			winCount += 1;			
+		}
+	}
+
+	/**
+	 * 自分の勝った回数を答える
+	 *
+	 * @return 勝った回数
+	 */
+
+	public int getWinCount()
+	{
+		return winCount_;
+	}
