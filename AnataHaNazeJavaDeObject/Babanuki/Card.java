@@ -1,7 +1,7 @@
 import java.lang.String;
 import java.lang.StringBuffer;
 
-public class Card{
+public class Card {
     public static final int JOKER = 0;
     public static final int CLUB = 1;
     public static final int DIAMOND = 2;
@@ -18,7 +18,7 @@ public class Card{
     */
 
     public Card(int suit, int number) {
-       this.suit_ = suit;
+        this.suit_ = suit;
         this.number_ = number;
 
     }
