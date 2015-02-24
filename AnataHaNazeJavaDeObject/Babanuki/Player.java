@@ -1,8 +1,3 @@
-import com.sun.tools.javac.util.Name;
-
-import java.lang.String;
-import java.lang.System;
-
 public class Player {
     // 進行役
     private Master master_;
@@ -11,7 +6,7 @@ public class Player {
     private String name_;
 
     // コンストラクタ
-    public void Player(String name, Master master, Name.Table table) {
+    public Player(String name, Master master, Table table) {
         this.name_ = name;
         this.master_ = master;
         this.table_ = table;
@@ -45,9 +40,6 @@ public class Player {
         }
     }
 
-    public void putOrder (int order) {
-        this.order_ = order;
-    }
 
     // 手札を見せる
 
@@ -73,7 +65,7 @@ public class Player {
         myHand_.addCard(pickedCard);
 
         // 同じ数のカードを探す
-        Card[] sameCards = myHand_.findSameNumberCard()
+        Card[] sameCards = myHand_.findSameNumberCard();
 
         if (sameCards != null) {
             // カードを捨てる

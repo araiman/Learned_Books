@@ -1,4 +1,3 @@
-import javax.smartcardio.Card;
 import java.lang.System;
 import java.util.ArrayList;
 

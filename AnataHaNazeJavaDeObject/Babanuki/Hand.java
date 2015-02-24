@@ -1,4 +1,3 @@
-import javax.smartcardio.Card;
 import java.lang.Math;
 import java.lang.String;
 import java.lang.StringBuffer;
@@ -12,12 +11,12 @@ public class Hand {
     }
 
     public Card pickCard() {
-        Card pickedCard = hand_.remove(0);
+        Card pickedCard = (Card) hand_.remove(0);
         return pickedCard;
     }
 
     public Card[] findSameNumberCard() {
-        int numberOfCards = hand_.size;
+        int numberOfCards = hand_.size();
         Card[] sameCards = null;
 
         // TODO 何もない場合の判定っているのか？何もない場合って、上がりの時しか無いよな。
@@ -31,7 +30,7 @@ public class Hand {
             int lastAddedCardNum = lastAddedCard.getNumber();
 
             for (int index = 0; index < lastIndex; index++) {
-                Card card = hand_.get(index);
+                Card card = (Card) hand_.get(index);
                 if (card.getNumber() == lastAddedCardNum) {
                     sameCards = new Card[2];
                     sameCards[0] = (Card) hand_.remove(lastIndex);
@@ -39,9 +38,8 @@ public class Hand {
                     break;
                 }
             }
-
-            return sameCards;
         }
+        return sameCards;
     }
 
     public void shuffleHand() {
@@ -51,7 +49,7 @@ public class Hand {
         int pos;
 
         for (int i = 0; i < numberOfCards * 2; i++) {
-            int pos = (int) hand_.get(Math.random() * numberOfCards);
+            pos = (int) (Math.random() * numberOfCards);
             Card card = (Card) hand_.remove(pos);
             hand_.add(card);
         }

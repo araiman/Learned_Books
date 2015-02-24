@@ -11,7 +11,7 @@ public class Master {
 
         int numberOfPlayers = players_.size();
 
-        for (index = 0; index < numberOfCards; index++) {
+        for (int index = 0; index < numberOfCards; index++) {
             Card card = cards.pickCard();
 
             // 各プレイヤーに順番にカードを配る
@@ -25,13 +25,10 @@ public class Master {
         // ゲームの開始を宣言する
         System.out.println("【ばばぬきを開始します】");
 
-        // プレイヤーの人数を取得する
-        int numberOfPlayers = players_.size();
-
         // 指名するプレイヤーの取得
-        for (count = 0; numberOfPlayers > 1; count++) {
-            int playerIndex = count % numberOfPlayers;
-            int nextPlyaerIndex = (count + 1) % numberOfPlayers;
+        for (int count = 0; players_.size() > 1; count++) {
+            int playerIndex = count % players_.size();
+            int nextPlyaerIndex = (count + 1) % players_.size();
 
             Player player = (Player) players_.get(playerIndex);
             // 次のプレイヤーの取得
