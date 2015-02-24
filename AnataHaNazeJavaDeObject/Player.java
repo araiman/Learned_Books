@@ -1,70 +1,77 @@
-public class Player
-{
+public class Player {
+    // 進行役
+    private Master master_;
+    private Table table_;
+    private Hand myHand_;
+    private String name_;
 
-	public static final int STONE = 0;
-	public static final int SCISSORS = 1;
-	public static final int PAPER = 2;
+    // コンストラクタ
+    public Player(String name, Master master, Table table) {
+        this.name_ = name;
+        this.master_ = master;
+        this.table_ = table;
+    }
 
-	//-----
-	//プレイヤークラスの属性
-	//-----
-	
-	/** プレイヤーの名前 */
+    // 名前のGetter
+    public String getName () {
+        return this.name_;
+    }
 
-	private String name_;
+    // 指名された際
 
-	/** プレイヤーの勝った回数　*/
+    public void play (Player nextPlayer) {
+        // 手札を見る
+        Hand nextHand = nextPlayer.showHand();
 
-	private int winCount_ = 0;
+        // カードを1枚引く
+        Card pickedCard = nextHand.pickCard();
 
-	/** 与えられた戦略 */
+        // 引いた結果を表示
+        System.out.println(this + ":" + nextPlayer + "さんから" + pickedCard + "を引きました");
 
-	private Tactics tactics_;
+        // 手札にカードを加え、同じカードを探す。もし、同じカードがあれば、カードを捨てる
+        dealCard(pickedCard);
 
-	//-----
-	//プレイヤークラスの操作
-	//-----
-	
-	// プレイヤーに戦略を渡す。
-	void setTactics(Tactics tactics){
-		tactics_ = tactics;
-	}
-	
-	/**
-	 * ジャンケンの手を出す
-	 *
-	 * @return ジャンケンの手
-	 */
-
-	public int showHand()
-	{
-		int hand = tactics_.readTactics();
-		return hand;
-	}
+        // カードの枚数がゼロだったら、進行役に上がりを宣言する
+        if (myHand_.getNumberOfCards() == 0) {
+           this.master_.declareWin(this);
+        } else {
+            System.out.println(this + ":残りの手札は" + myHand_ + "です" );
+        }
+    }
 
 
-	/**
-	 * 審判から勝敗を聞く
-	 *
-	 * @param result true:勝 false:負
-	 */
+    // 手札を見せる
 
-	public void notifyResult(boolean result)
-	{
-		if(true == result)
-		{
-			winCount += 1;			
-		}
-	}
+    public Hand showHand() {
+        // もし、この時点で手札が残り1枚ならば上がりとなるので宣言する
+        if (myHand_.getNumberOfCards () == 1) {
+            master_.declareWin(this);
+        }
 
-	/**
-	 * 自分の勝った回数を答える
-	 *
-	 * @return 勝った回数
-	 */
+        // 見せる前にシャッフルする
+        myHand_.shuffleHand();
 
-	public int getWinCount()
-	{
-		return winCount_;
-	}
+        return this.myHand_;
+    }
+
+    // カードを手札に加える
+    public void receiveCard (Card card) {
+        dealCard(card);
+    }
+
+    public void dealCard (Card pickedCard) {
+        // カードを加える
+        myHand_.addCard(pickedCard);
+
+        // 同じ数のカードを探す
+        Card[] sameCards = myHand_.findSameNumberCard();
+
+        if (sameCards != null) {
+            // カードを捨てる
+            this.table_.disposeCard(sameCards);
+
+        }
+    }
+
 }

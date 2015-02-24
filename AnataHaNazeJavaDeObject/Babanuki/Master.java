@@ -1,8 +1,9 @@
 import java.lang.System;
 import java.util.ArrayList;
+import java.util.logging.Logger;
 
 public class Master {
-    private ArrayList players_;
+    private ArrayList<Player> players_ = new ArrayList<Player>();
 
     // ゲームの準備をする
     public void prepareGame(Hand cards) {
@@ -54,6 +55,10 @@ public class Master {
 
     // ゲームに参加するプレイヤーを登録する
     public void registerPlayer(Player player) {
+        // loggerを消す
+        final Logger logger = Logger.getLogger("get player");
+        logger.info(""+player);
+        logger.info(""+this.players_);
         this.players_.add(player);
     }
 

@@ -2,7 +2,7 @@ import java.lang.System;
 import java.util.ArrayList;
 
 public class Table {
-    private ArrayList disposeCards_ = new ArrayList();
+    private ArrayList<Card[]> disposeCards_ = new ArrayList<Card[]>();
 
     public void disposeCard(Card card[]) {
         for (int index = 0; index < card.length; index++) {

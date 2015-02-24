@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.logging.Logger;
 
 public class OldMaid {
     public static void main(String[]args) {
@@ -10,6 +11,10 @@ public class OldMaid {
         Player murata = new Player("Murata", master, table);
         Player yamada = new Player("Yamada", master, table);
         Player saito = new Player("Saito", master, table);
+
+        // loggerを消す
+        final Logger logger = Logger.getLogger("get master");
+        logger.info(""+master);
 
         // ゲームに参加するプレイヤーを登録する
         master.registerPlayer(murata);

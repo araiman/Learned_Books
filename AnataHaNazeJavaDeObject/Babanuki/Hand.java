@@ -4,7 +4,7 @@ import java.lang.StringBuffer;
 import java.util.ArrayList;
 
 public class Hand {
-    private ArrayList hand_ = new ArrayList();
+    private ArrayList<Card> hand_ = new ArrayList<Card>();
 
     public void addCard(Card card) {
         hand_.add(card);
