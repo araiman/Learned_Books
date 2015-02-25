@@ -20,7 +20,6 @@ public class Card {
     public Card(int suit, int number) {
         this.suit_ = suit;
         this.number_ = number;
-
     }
 
     public int getNumber() {

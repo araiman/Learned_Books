@@ -33,11 +33,12 @@ public class Master {
 
             Player player = (Player) players_.get(playerIndex);
             // 次のプレイヤーの取得
-            Player nextPlayer = (Player)players_.get(nextPlyaerIndex);
+            Player nextPlayer = (Player) players_.get(nextPlyaerIndex);
 
             // プレイヤーを指名する
             player.play(nextPlayer);
         }
+
         // プレイヤーが上がって、残り1名となったとき、ゲームの終了を宣言する
         System.out.println("[ばばぬきを終了しました]");
     }
@@ -55,10 +56,6 @@ public class Master {
 
     // ゲームに参加するプレイヤーを登録する
     public void registerPlayer(Player player) {
-        // loggerを消す
-        final Logger logger = Logger.getLogger("get player");
-        logger.info(""+player);
-        logger.info(""+this.players_);
         this.players_.add(player);
     }
 

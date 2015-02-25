@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.logging.Logger;
 
 public class OldMaid {
-    public static void main(String[]args) {
+    public static void main(String[] args) {
         // 進行役の生成
         Master master = new Master();
         // テーブルの生成
@@ -11,10 +11,6 @@ public class OldMaid {
         Player murata = new Player("Murata", master, table);
         Player yamada = new Player("Yamada", master, table);
         Player saito = new Player("Saito", master, table);
-
-        // loggerを消す
-        final Logger logger = Logger.getLogger("get master");
-        logger.info(""+master);
 
         // ゲームに参加するプレイヤーを登録する
         master.registerPlayer(murata);
@@ -31,7 +27,7 @@ public class OldMaid {
         master.startGame();
     }
 
-    private static Hand createTrump () {
+    private static Hand createTrump() {
         Hand trump = new Hand();
 
         for (int count = 1; count < 13; count++) {

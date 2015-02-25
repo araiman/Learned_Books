@@ -19,7 +19,6 @@ public class Hand {
         int numberOfCards = hand_.size();
         Card[] sameCards = null;
 
-        // TODO 何もない場合の判定っているのか？何もない場合って、上がりの時しか無いよな。
         // 手札に何もない場合、何もしない
         if (numberOfCards > 0) {
             // 最後に追加されたカードを取得する

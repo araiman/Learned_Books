@@ -1,8 +1,10 @@
+import java.util.logging.Logger;
+
 public class Player {
     // 進行役
     private Master master_;
     private Table table_;
-    private Hand myHand_;
+    private Hand myHand_ = new Hand();
     private String name_;
 
     // コンストラクタ
@@ -13,13 +15,13 @@ public class Player {
     }
 
     // 名前のGetter
-    public String getName () {
+    public String getName() {
         return this.name_;
     }
 
     // 指名された際
 
-    public void play (Player nextPlayer) {
+    public void play(Player nextPlayer) {
         // 手札を見る
         Hand nextHand = nextPlayer.showHand();
 
@@ -34,9 +36,9 @@ public class Player {
 
         // カードの枚数がゼロだったら、進行役に上がりを宣言する
         if (myHand_.getNumberOfCards() == 0) {
-           this.master_.declareWin(this);
+            this.master_.declareWin(this);
         } else {
-            System.out.println(this + ":残りの手札は" + myHand_ + "です" );
+            System.out.println(this + ":残りの手札は" + myHand_ + "です");
         }
     }
 
@@ -45,7 +47,7 @@ public class Player {
 
     public Hand showHand() {
         // もし、この時点で手札が残り1枚ならば上がりとなるので宣言する
-        if (myHand_.getNumberOfCards () == 1) {
+        if (myHand_.getNumberOfCards() == 1) {
             master_.declareWin(this);
         }
 
@@ -56,11 +58,11 @@ public class Player {
     }
 
     // カードを手札に加える
-    public void receiveCard (Card card) {
+    public void receiveCard(Card card) {
         dealCard(card);
     }
 
-    public void dealCard (Card pickedCard) {
+    public void dealCard(Card pickedCard) {
         // カードを加える
         myHand_.addCard(pickedCard);
 
