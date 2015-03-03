@@ -3,7 +3,7 @@
 <%@ page import="java.util.Date, java.text.SimpleDateFormat" %>
 <%
     // 運勢のリスト
-    String[] luckArray = {"超スッキリ", "スッキリ", "最悪", "ウルトラ最悪"};
+    String[] luckArray = {"超スッキリ", "スッキリ", "最悪"};
 
     // 0以上3未満の整数、(0,1,2)を乱数で生成
     int index = (int) (Math.random() * 3);
