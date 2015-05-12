@@ -10,8 +10,8 @@ public class Main3 {
     public static void main(String[] args) throws Exception {
         Class clazz = RefSample.class;
         Field[] fields = clazz.getDeclaredFields();
-        for (int i = 0; i < fields.length; i++) {
-            System.out.println(fields[i]);
+        for (Field field : fields) {
+            System.out.println(field);
         }
 
         Constructor<?> constructor = clazz.getConstructor(int.class);
